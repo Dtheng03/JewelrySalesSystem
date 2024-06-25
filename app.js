@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require("mongoose");
+const cors = require("cors");
+const { swaggerUi, swaggerDocs } = require('./swagger');
 
 const categoriesRouter = require("./routes/categoriesRouter")
 const customersRouter = require("./routes/customersRouter")
@@ -13,6 +15,8 @@ const ordersRouter = require("./routes/ordersRouter")
 const productsRouter = require("./routes/productsRouter")
 
 var app = express();
+app.use(cors());
+app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // connect DB
 const url = "mongodb://127.0.0.1:27017/jewelrySalesSystem";
@@ -20,10 +24,6 @@ const connect = mongoose.connect(url);
 connect.then((db) => {
   console.log("Connected successfully to server!");
 })
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
