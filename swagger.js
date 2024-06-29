@@ -48,6 +48,9 @@ const swaggerOptions = {
             },
             {
                 name: 'Products',
+            },
+            {
+                name: 'Promotions',
             }
         ]
     },

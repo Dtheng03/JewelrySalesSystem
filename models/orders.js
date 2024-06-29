@@ -13,8 +13,8 @@ const orderSchema = new Schema({
         required: true,
     },
     discount: {
-        type: Number,
-        default: 0
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Promotions",
     },
     status: {
         type: Number,

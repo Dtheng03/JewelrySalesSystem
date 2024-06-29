@@ -30,12 +30,7 @@ const employeeSchema = new Schema({
     isAdmin: {
         type: Boolean,
         default: false,
-    },
-    managedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employees",
-        default: ""
-    },
+    }
 }, { timestamps: true });
 
 const Employees = mongoose.model("Employees", employeeSchema);
