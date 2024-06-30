@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const Employees = require("../models/employees");
 
 module.exports = {
     authenticateToken: function (req, res, next) {
@@ -30,5 +31,30 @@ module.exports = {
             // Chuyển tiếp yêu cầu
             next();
         });
+    },
+    isAdmin: function (req, res, next) {
+        const { isAdmin } = req.user;
+        if (!isAdmin) {
+            return res.status(403).json({
+                "status": "error",
+                "message": "Not allowed",
+                "description": "Employee is not allowed to do this action."
+            })
+        } else {
+            next();
+        }
+    },
+    isActive: async function (req, res, next) {
+        const { id } = req.user;
+        const employee = await Employees.findById(id);
+        if (employee.status === false) {
+            return res.status(401).json({
+                "status": "error",
+                "message": "Invalid credentials",
+                "description": "This account is not allow to this action."
+            });
+        } else {
+            next();
+        }
     }
 }

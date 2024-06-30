@@ -14,6 +14,7 @@ const customerSchema = new Schema({
     phone: {
         type: String,
         required: true,
+        unique: true
     },
     gender: {
         type: Boolean,
