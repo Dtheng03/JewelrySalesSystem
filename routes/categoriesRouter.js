@@ -26,5 +26,10 @@ const { authenticateToken } = require("../config/auth")
  */
 categoriesRouter.route("/")
     .get(authenticateToken, categoriesController.getAll)
+    .post( categoriesController.createCategory);
+categoriesRouter.route("/:id")
+    .get(authenticateToken, categoriesController.getCategoryById)
+    .put(authenticateToken, categoriesController.updateCategory)
+    .delete(authenticateToken, categoriesController.deleteCategory);
 
 module.exports = categoriesRouter;

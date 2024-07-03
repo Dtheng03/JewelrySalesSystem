@@ -26,5 +26,10 @@ const { authenticateToken } = require("../config/auth")
  */
 productsRouter.route("/")
     .get(authenticateToken, productsController.getAll)
-
+    .post(authenticateToken, productsController.addProduct);
+productsRouter.route("/:id")
+    .get(authenticateToken, productsController.getProductById)
+    .put(authenticateToken, productsController.updateProduct)
+    .patch(authenticateToken, productsController.deactivateProduct)
+    .delete(authenticateToken, productsController.deleteProduct);
 module.exports = productsRouter;
