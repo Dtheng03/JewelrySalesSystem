@@ -8,29 +8,42 @@ class categoriesController {
                 res.status(200).json(categories)
             })
     }
-     // Create a category
-     createCategory(req, res, next) {
+    createCategory(req, res, next) {
         const { name } = req.body;
-        const newCategory = new Categories({ name });
+    
+        // Validate name
+        if (!name || name.trim() === "") {
+            return res.status(400).json({ error: "Please input name" });
+        }
+    
+        const newCategory = new Categories({ name: name.trim() });
         newCategory.save()
             .then((category) => {
                 res.status(201).json(category);
             })
             .catch(next);
     }
-     // Update a category
-     updateCategory(req, res, next) {
-        const { id } = req.params;
-        const { name } = req.body;
-        Categories.findByIdAndUpdate(id, { name }, { new: true })
-            .then((category) => {
-                if (!category) {
-                    return res.status(404).json({ message: "Category not found" });
-                }
-                res.status(200).json(category);
-            })
-            .catch(next);
+    
+    // Update a category
+    updateCategory(req, res, next) {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    // Validate the name field
+    if (!name || name.trim() === "") {
+        return res.status(400).json({ error: "Please input name" });
     }
+
+    Categories.findByIdAndUpdate(id, { name: name.trim() }, { new: true })
+        .then((category) => {
+            if (!category) {
+                return res.status(404).json({ message: "Category not found" });
+            }
+            res.status(200).json(category);
+        })
+        .catch(next);
+}
+
 
     // View category detail
     getCategoryById(req, res, next) {
