@@ -1,7 +1,7 @@
 var express = require('express');
 var productsRouter = express.Router();
 const productsController = require("../controllers/productsController");
-const { authenticateToken } = require("../config/auth")
+const { authenticateToken } = require("../config/auth");
 
 /**
  * @swagger
@@ -182,7 +182,7 @@ productsRouter.route("/")
  *           application/json:
  *             schema:
  *               type: object
- *               properties
+ *               properties:
  *                 message:
  *                   type: string
  */
