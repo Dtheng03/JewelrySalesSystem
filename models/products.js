@@ -28,6 +28,10 @@ const productSchema = new Schema({
         ref: "Categories",
         required: true,
     },
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
 }, { timestamps: true });
 
 const Products = mongoose.model("Products", productSchema);
