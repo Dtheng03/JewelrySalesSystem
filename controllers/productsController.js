@@ -4,9 +4,11 @@ class productsController {
     // API
     getAll(req, res, next) {
         Products.find({})
+            .populate('categoryId', 'name') // Populating categoryId to get category name
             .then((products) => {
-                res.status(200).json(products)
+                res.status(200).json(products);
             })
+            .catch(next);
     }
     addProduct(req, res, next) {
         const { name, image, price, quantity, description, categoryId } = req.body;
@@ -100,6 +102,7 @@ class productsController {
     getProductById(req, res, next) {
         const { id } = req.params;
         Products.findById(id)
+            .populate('categoryId', 'name') // Populating categoryId to get category name
             .then((product) => {
                 if (!product) {
                     return res.status(404).json({ message: "Product not found" });
