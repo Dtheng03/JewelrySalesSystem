@@ -129,7 +129,7 @@ employeesRouter.route("/change-status/:employeeId")
 *         name: employeeId
 *         required: true
 *         schema:
-*           type: integer
+*           type: string
 *     responses:
 *       200:
 *         description: Thành công
@@ -153,7 +153,7 @@ employeesRouter.route("/:employeeId")
 *         name: employeeId
 *         required: true
 *         schema:
-*           type: integer
+*           type: string
 *     requestBody:
 *       required: true
 *       content:

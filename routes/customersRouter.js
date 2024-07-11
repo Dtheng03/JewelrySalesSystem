@@ -76,7 +76,7 @@ customersRouter.route("/add")
 *         name: customerId
 *         required: true
 *         schema:
-*           type: integer
+*           type: string
 *     responses:
 *       200:
 *         description: Thành công
@@ -100,7 +100,7 @@ customersRouter.route("/:customerId")
 *         name: customerId
 *         required: true
 *         schema:
-*           type: integer
+*           type: string
 *     requestBody:
 *       required: true
 *       content:
