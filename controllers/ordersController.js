@@ -124,11 +124,17 @@ class ordersController {
         })
         .populate({
           path: "discount",
-          select: "_id  name percent ",
+          select: "_id name percent",
         })
         .populate({
           path: "orderDetails",
-          // select: "name address phone gender",
+          populate: {
+            path: "products.productId", // Đặt path để populate từ products
+            // model: Products, // Chỉ định model là Products
+            populate: {
+              path: "categoryId",
+            },
+          },
         });
 
       if (!order) {
