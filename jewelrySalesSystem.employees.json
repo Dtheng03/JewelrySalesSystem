@@ -1,0 +1,21 @@
+[
+  {
+    "_id": {
+      "$oid": "66814e5e7d7fde270b4bb33f"
+    },
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "phone": "0987654321",
+    "password": "$2b$10$MWJYdVw4ha96qOaJRCjI9eXw5mtVZ68.od6bIwG5dvBCahXpTWwrm",
+    "gender": true,
+    "status": true,
+    "isAdmin": true,
+    "createdAt": {
+      "$date": "2024-06-30T12:23:58.498Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-30T12:23:58.498Z"
+    },
+    "__v": 0
+  }
+]
